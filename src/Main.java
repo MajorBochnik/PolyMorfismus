@@ -16,19 +16,22 @@ public class Main {
             String vec = sc.nextLine();
 
             if (vec.equals("Smartphone")) {
-                System.out.println("Jaká značka?");
+                System.out.println("Jaký model?");
                 String smartphone = sc.nextLine();
                 prehravac[i] = new Smartphone(smartphone);
             }
             else if (vec.equals("Radio")) {
                 System.out.println("Jaká značka?");
                 String radio = sc.nextLine();
-                prehravac[i] = new Radio();
+                prehravac[i] = new Radio(radio);
             }
             else if (vec.equals("MP3")) {
                 System.out.println("Jaká značka?");
                 String mp3 = sc.nextLine();
                 prehravac[i] = new MP3(mp3);
+            }
+            else {
+                System.out.println("Nauč se psát!");
             }
         }
 
@@ -41,7 +44,10 @@ public class Main {
             System.out.println("4 -> Přehrát uživatelem specifikovanou písničku");
             System.out.println("0 -> Ukončení");
 
-            switch (sc.nextInt()) {
+            int Pocet = sc.nextInt();
+            sc.nextLine();
+
+            switch (Pocet) {
                 case 1:
                     for (int i = 0; i < prehravac.length; i++) {
                         System.out.println(prehravac[i].toString());
@@ -52,14 +58,24 @@ public class Main {
                     System.out.println("Jaké zařízení chceš přehrát?");
                     int index = sc.nextInt();
                     sc.nextLine();
-                    prehravac[index].prehraj(true);
+                    if (index <= prehravac.length && index >= 0){
+                        prehravac[index].prehraj(true);
+                    }
+                    else {
+                        System.err.println(" „Ash nazg durbatulûk, ash nazg gimbatul, ash nazg thrakatulûk agh burzum-ishi krimpatul“ ");
+                    }
                     break;
 
                 case 3:
                     System.out.println("Jaké zařízení chceš ukončit?");
                     int index2 = sc.nextInt();
                     sc.nextLine();
-                    prehravac[index2].prehraj(false);
+                    if (index2 <= prehravac.length && index2 >= 0){
+                        prehravac[index2].prehraj(false);
+                    }
+                    else {
+                        System.err.println(" „Ash nazg durbatulûk, ash nazg gimbatul, ash nazg thrakatulûk agh burzum-ishi krimpatul“ ");
+                    }
                     break;
 
                 case 4:
@@ -73,6 +89,10 @@ public class Main {
 
                 case 0:
                     pokracovat = false;
+                    break;
+
+                default:
+                    System.err.println(" „Ash nazg durbatulûk, ash nazg gimbatul, ash nazg thrakatulûk agh burzum-ishi krimpatul“ ");
                     break;
 
 
